@@ -5,7 +5,7 @@ import { Injectable } from '@nestjs/common';
     this.http.post(url, { text: msg }): This line uses the injected http service (likely from @nestjs/axios) to make a POST request to the url
     3: without the subscribe the application would initiate the HTTP request but wouldn't do anything with the response
 */
-const url = "https://hooks.slack.com/services/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"
+const url = ""
 @Injectable()
 export class MessageService {
     constructor(private http: HttpService) { }
