@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { MessageController } from './controller/message/message.controller';
-import { MessageService } from './service/message/message.service';
+import { MessageController } from './controller/message/Message.controller';
+import { MessageService } from './service/message/Message.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [],
+  imports: [HttpModule],
   controllers: [MessageController],
   providers: [MessageService],
 })

@@ -1,12 +1,16 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { MessageService } from 'src/service/message/message.service';
+import { MessageService } from 'src/service/message/Message.service';
+import { MessageType } from './MessageType';
 
 @Controller('message')
 export class MessageController {
-    constructor(private readonly messageService: MessageService){}
-
+    constructor (private mesgService: MessageService){}
+    
     @Post()
-    sendMessage(@Body() message: any){
-        return this.messageService.getMessage();
+    getMessage(@Body() body: MessageType){
+        // console.log("here");
+        if (body.Type == "Warning"){
+            this.mesgService.SendMessage(body.Description)
+        }
     }
 }

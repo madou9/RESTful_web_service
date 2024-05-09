@@ -1,5 +1,5 @@
-export interface messageType {
+export interface MessageType {
     Type: string,
-    Name: String,
-    Description: String;
+    Name: string,
+    Description: string;
 }
