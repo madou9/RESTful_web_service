@@ -12,7 +12,7 @@ export class MessageService {
     constructor(private http: HttpService, private configService: ConfigService) {}
     
     SendMessage(msg: string) {
-        const url = this.configService.get('SLACK_WEBHOOK_URL');
+        const url = this.configService.get('MICROSOFT_TEAM_WEBHOOK_URL');
         // console.log("here")
         this.http.post(url, { text: msg }).subscribe(); // 3
     }
