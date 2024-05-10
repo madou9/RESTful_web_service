@@ -9,11 +9,11 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class MessageService {
-    constructor(private http: HttpService, private configService: ConfigService) { }
+    constructor(private http: HttpService, private configService: ConfigService) {}
     
     SendMessage(msg: string) {
-        // console.log("here")
         const url = this.configService.get('SLACK_WEBHOOK_URL');
+        // console.log("here")
         this.http.post(url, { text: msg }).subscribe(); // 3
     }
 }
