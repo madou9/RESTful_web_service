@@ -30,7 +30,9 @@ $ npm run start:dev
 This project relies on environment variables for configuration. Create a `.env` file in the root directory and define the following variables:
 
 
-If you have your own webhook URLs, you can create a `.env` file and store the data inside. Then, when sending a message, specify the `TARGET` field in the message payload object as the name of the webhook URL from the `.env` file. For example:
+If you have your own webhook URLs, you can create a `.env` file and store the data inside. 
+Then, when sending a message, specify the `TARGET` field in the message payload object as 
+the name of the webhook URL from the `.env` file. For example:
 
 ```typescript
 {
