@@ -43,6 +43,10 @@ the name of the webhook URL from the `.env` file. For example:
   TARGET: "MICROSOFT_TEAM_WEBHOOK_URL"
 }
 
+.env variable 
+MICROSOFT_TEAM_WEBHOOK_URL = "your Microsoft Teams Webhook url"
+SLACK_WEBHOOK_URL = "your Slack Webhook url"
+
 This addition provides clear instructions on how users can configure their 
 own webhook URLs and reference them in the message payload object. 
 Let me know if you need further assistance!
