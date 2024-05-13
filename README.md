@@ -1,73 +1,45 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# RESTful web service
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project implements a message sender service using NestJS, a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. The service sends messages of different types (e.g., warnings, notifications) to various targets (e.g., Slack, Microsoft Teams) based on user requests.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Project Structure
 
-## Description
+### Controller
+- The `MessageController` handles incoming HTTP requests and delegates message sending tasks to the `MessageService`.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Service
+- The `MessageService` encapsulates the logic for sending messages, utilizing the injected `HttpService` to make HTTP requests.
 
-## Installation
+### Interfaces
+- The `MessageType` interface defines the structure of the message payload, ensuring type safety throughout the application.
+
+### Module
+- The `AppModule` configures the application, specifying imported modules, controllers, and providers.
+
+## Running the App
 
 ```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
+# Development
 $ npm run start
 
-# watch mode
+# Watch Mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
+## Configuration
 
-## Test
+This project relies on environment variables for configuration. Create a `.env` file in the root directory and define the following variables:
 
-```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+If you have your own webhook URLs, you can create a `.env` file and store the data inside. Then, when sending a message, specify the `TARGET` field in the message payload object as the name of the webhook URL from the `.env` file. For example:
 
-# test coverage
-$ npm run test:cov
-```
+```typescript
+{
+  TYPE: "Notification",
+  NAME: "New Message",
+  DESCRIPTION: "This is a new notification message",
+  TARGET: "MICROSOFT_TEAM_WEBHOOK_URL"
+}
 
-## Support
+This addition provides clear instructions on how users can configure their own webhook URLs and reference them in the message payload object. Let me know if you need further assistance!
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
