@@ -27,7 +27,8 @@ $ npm run start:dev
 
 ## Configuration
 
-This project relies on environment variables for configuration. Create a `.env` file in the root directory and define the following variables:
+This project relies on environment variables for configuration. Create a `.env` file 
+in the root directory and define the following variables:
 
 
 If you have your own webhook URLs, you can create a `.env` file and store the data inside. 
