@@ -42,6 +42,8 @@ the name of the webhook URL from the `.env` file. For example:
   TARGET: "MICROSOFT_TEAM_WEBHOOK_URL"
 }
 
-This addition provides clear instructions on how users can configure their own webhook URLs and reference them in the message payload object. Let me know if you need further assistance!
+This addition provides clear instructions on how users can configure their 
+own webhook URLs and reference them in the message payload object. 
+Let me know if you need further assistance!
 
 
