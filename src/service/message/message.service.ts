@@ -7,18 +7,13 @@ import { ConfigService } from '@nestjs/config';
     3: without the subscribe the application would initiate the HTTP request but wouldn't do anything with the response
 */
 
+
 @Injectable()
 export class MessageService {
     constructor(private http: HttpService, private configService: ConfigService) {}
     
-    SendMessage(msg: string) {
-        const url = this.configService.get('MICROSOFT_TEAM_WEBHOOK_URL');
-        // console.log("here")
-        this.http.post(url, { text: msg }).subscribe({
-            next: () => console.log('Message sent successfully'),
-            error: (error) => {
-                console.error('Error sending message:', error = 400);
-            },
-        }); // 3
+    SendMessage(msg: string, target: string) { 
+        const url = this.configService.get(target);
+        return this.http.post(url, { text: msg });
     }
 }
