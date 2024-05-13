@@ -10,11 +10,11 @@ import { Response } from 'express';
   It sets the response status code and error messages based on the success or failure of the message sending process.
 */
 
-@Controller('message') // Denotes this class as a NestJS controller for handling HTTP requests at the '/message' route
+@Controller('message') 
 export class MessageController {
-  constructor(private mesgService: MessageService) { } // Inject the MessageService dependency
+  constructor(private mesgService: MessageService) { } 
 
-  @Post() // Defines this method as a handler for POST requests at the '/message' route
+  @Post()
   getMessage(@Body() body: MessageType, @Res() response: Response): any {
     if (body.Type === "Warning") {
       const req = this.mesgService.SendMessage(body.Description, body.Target);
@@ -23,8 +23,8 @@ export class MessageController {
           response.sendStatus(apiResponse.status) // Set response status based on API response
         }),
         catchError((error) => {
-          response.sendStatus(500);
-          throw new HttpException('Failed to connect to external API', HttpStatus.INTERNAL_SERVER_ERROR); // code error = 500
+          response.sendStatus(400);
+          throw new HttpException('Failed to connect to external API', HttpStatus.BAD_REQUEST); // code error = 400
         })
       );
     } else
